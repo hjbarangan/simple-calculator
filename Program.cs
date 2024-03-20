@@ -31,32 +31,45 @@ class Operation
     {
         Operation operation = new Operation();
 
-        Console.Write("Enter first number:");
+        Console.Write("Enter the first number:");
         int firstNumber = Convert.ToInt32(Console.ReadLine());
 
-        Console.Write("Enter second number:");
+        Console.Write("Enter the second number:");
         int secondNumber = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine();
 
+        Console.Write("Choose an operation: \n");
+        Console.Write("1. Addition  \n");
+        Console.Write("2. Subtraction  \n");
+        Console.Write("3. Multiplication  \n");
+        Console.Write("4. Division  \n\n");
 
-        Console.Write("Enter symbol(/, + ,- ,*):");
+        Console.Write("Enter the operation number (1-4):");
 
         // Use null-coalescing operator to provide firstNumber default value of an empty string if the input is null.
-        string symbol = Console.ReadLine() ?? "";
+        string operationNumber = Console.ReadLine() ?? "";
 
         //Switch case to perform different operations
-        switch (symbol)
+        switch (operationNumber)
         {
-            case "+":
-                Console.WriteLine("Addition of {0} and {1} is {2}", firstNumber, secondNumber, operation.Add(firstNumber, secondNumber));
+            case "1":
+                Console.WriteLine("Result of Addition: {0}", operation.Add(firstNumber, secondNumber));
                 break;
-            case "-":
-                Console.WriteLine("Subtraction of {0} and {1} is {2}", firstNumber, secondNumber, operation.Subtract(firstNumber, secondNumber));
+            case "2":
+                Console.WriteLine("Result of Subtraction: {0}", operation.Subtract(firstNumber, secondNumber));
                 break;
-            case "*":
-                Console.WriteLine("Multiplication of {0} and {1} is {2}", firstNumber, secondNumber, operation.Multiply(firstNumber, secondNumber));
+            case "3":
+                Console.WriteLine("Result of Multiplication: {0}", operation.Multiply(firstNumber, secondNumber));
                 break;
-            case "/":
-                Console.WriteLine("Division of {0} and {1} is {2}", firstNumber, secondNumber, operation.Divide(firstNumber, secondNumber));
+            case "4":
+                // Check if the second number is zero
+                if (secondNumber == 0)
+                {
+                    Console.WriteLine("Cannot divide by zero");
+                    return;
+                }
+                Console.WriteLine("Result of Division:  {0}", operation.Divide(firstNumber, secondNumber));
+
                 break;
             default:
                 Console.WriteLine("Invalid choice");
@@ -65,5 +78,6 @@ class Operation
 
 
     }
+
 }
 
